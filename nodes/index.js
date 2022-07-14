@@ -22,58 +22,14 @@ async function createKeyPairFromFile(){
     return Keypair.fromSecretKey(secretKey);
 }
 
-/*async function createAccount(){
-    const rpcUrl = 'http://localhost:8899';
-
-    const connection = new Connection(rpcUrl,'confirmed');
-
-    const signer = await createKeyPairFromFile();
-
-    //make the PDA from the original programID (we get from deployment)
-    const newAccountPubkey = await PublicKey.createWithSeed(
-        signer.publicKey,
-        "program1",
-        new PublicKey("EfyWUgrFnBHRcSZXo9v8UYEzVc26uHRFAbyB7A6pS1aE"),
-    );
-    //give enough to not disappear 
-    const lamports = await connection.getMinimumBalanceForRentExemption(2048);
-
-    //instruction for system program with seed
-    const newAccIx = SystemProgram.createAccountWithSeed(
-        {
-            fromPubkey: signer.publicKey,
-
-            basePubkey: signer.publicKey,
-
-            seed: "campaign1",
-
-            newAccountPubkey,
-
-            lamports, // todo
-
-            space: 2048,
-
-            programId : new PublicKey("EfyWUgrFnBHRcSZXo9v8UYEzVc26uHRFAbyB7A6pS1aE"),
-        }
-    )
-    
-    //make the new account finallly with a tx
-    const newAccTx = new Transaction().add(newAccIx);
-
-    console.log(`The address of campaign1 account is : ${newAccountPubkey.toBase58()}`);
-
-    await sendAndConfirmTransaction(connection,newAccTx, [signer]);
-
-
-}*/
 async function createAccount() {
 
     const rpcUrl = 'http://localhost:8899';
-    connection = new Connection(rpcUrl, 'confirmed');
+    let connection = new Connection(rpcUrl, 'confirmed');
     const signer = await createKeyPairFromFile();
     const newAccountPubkey = await PublicKey.createWithSeed(
       signer.publicKey,
-      "campaign2",
+      "campaign3",
       new PublicKey("EfyWUgrFnBHRcSZXo9v8UYEzVc26uHRFAbyB7A6pS1aE"),
     );
     const lamports = await connection.getMinimumBalanceForRentExemption(
@@ -82,7 +38,7 @@ async function createAccount() {
     const instruction = SystemProgram.createAccountWithSeed({
       fromPubkey: signer.publicKey,
       basePubkey: signer.publicKey,
-      seed: "campaign2",
+      seed: "campaign3",
       newAccountPubkey,
       lamports,
       space: 1024,
@@ -99,4 +55,4 @@ async function createAccount() {
   }
 
 establishConnection();
-//createAccount();
+createAccount();
