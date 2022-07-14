@@ -1,0 +1,27 @@
+{
+  "name": "crowfund-contract",
+  "version": "1.0.0",
+  "description": "Node to interact with Solana smartcontract making crowdfunding campaigns",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drespn/crowdfund-contract.git"
+  },
+  "keywords": [
+    "solana",
+    "crowdfund"
+  ],
+  "author": "Diego Espinosa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drespn/crowdfund-contract/issues"
+  },
+  "homepage": "https://github.com/drespn/crowdfund-contract#readme",
+  "dependencies": {
+    "@solana/web3.js": "^1.48.0",
+    "mz": "^2.7.0"
+  }
+}

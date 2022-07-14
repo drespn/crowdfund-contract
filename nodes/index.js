@@ -73,7 +73,7 @@ async function createAccount() {
     const signer = await createKeyPairFromFile();
     const newAccountPubkey = await PublicKey.createWithSeed(
       signer.publicKey,
-      "campaign1",
+      "campaign2",
       new PublicKey("EfyWUgrFnBHRcSZXo9v8UYEzVc26uHRFAbyB7A6pS1aE"),
     );
     const lamports = await connection.getMinimumBalanceForRentExemption(
@@ -82,7 +82,7 @@ async function createAccount() {
     const instruction = SystemProgram.createAccountWithSeed({
       fromPubkey: signer.publicKey,
       basePubkey: signer.publicKey,
-      seed: "campaign1",
+      seed: "campaign2",
       newAccountPubkey,
       lamports,
       space: 1024,
@@ -99,4 +99,4 @@ async function createAccount() {
   }
 
 establishConnection();
-createAccount();
+//createAccount();
